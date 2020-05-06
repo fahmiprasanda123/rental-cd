@@ -11,11 +11,20 @@ use Illuminate\Support\Str;
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
+// $router->get('/', function () use ($router) {
+//     return $router->app->version();
+// });
 
 //generate app key
 $router->get('/key', function (){
     return Str::random(32);
 });
+
+$router->get('/', function () use ($router) {
+    $res['success'] = true;
+    $res['result'] = "Rental CD created by Fahmi Prasanda";
+    return response($res);
+  });
+  $router->post('/login', 'LoginController@index');
+  $router->post('/register', 'UserController@register');
+  $router->get('/user/{id}', ['middleware' => 'auth', 'uses' =>  'UserController@get_user']);
