@@ -25,6 +25,14 @@ $router->get('/', function () use ($router) {
     $res['result'] = "Rental CD created by Fahmi Prasanda";
     return response($res);
   });
+  //auth
   $router->post('/login', 'LoginController@index');
   $router->post('/register', 'UserController@register');
   $router->get('/user/{id}', ['middleware' => 'auth', 'uses' =>  'UserController@get_user']);
+
+  //cd
+  $router->get('/cd', 'CdController@index');
+$router->get('/cd/{id_cd}', 'CdController@show');
+$router->post('/cd/save', 'CdController@store');
+$router->post('/cd/{id_cd}/update', 'CdController@update');
+$router->post('/cd/delete/{id_cd}', 'CdController@destroy');
