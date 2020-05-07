@@ -32,7 +32,14 @@ $router->get('/', function () use ($router) {
 
   //cd
   $router->get('/cd', 'CdController@index');
-$router->get('/cd/{id_cd}', 'CdController@show');
-$router->post('/cd/save', 'CdController@store');
-$router->post('/cd/{id_cd}/update', 'CdController@update');
-$router->post('/cd/delete/{id_cd}', 'CdController@destroy');
+  $router->get('/cd/{id_cd}', 'CdController@show');
+  $router->post('/cd/save', 'CdController@store');
+  $router->post('/cd/{id_cd}/update', 'CdController@update');
+  $router->post('/cd/delete/{id_cd}', 'CdController@destroy');
+
+  //transaction
+  $router->get('/transaction', 'TransactionController@index');
+  $router->get('/transaction/{id_transaksi}', 'TransactionController@show');
+  $router->post('/transaction/save', 'TransactionController@store');
+  $router->post('/transaction/{id_transaksi}/update', 'TransactionController@update');
+  $router->post('/transaction/delete/{id_transaksi}', 'TransactionController@destroy');
