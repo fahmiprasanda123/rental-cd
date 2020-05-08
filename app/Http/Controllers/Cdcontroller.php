@@ -17,20 +17,25 @@ class CdController extends Controller
 
     public function index()
     {
-        $data = Cd::all();
-        return response($data);
+        // $data = Cd::all();
+        // return response($data);
+        $cd = Cd::with(['category:id_category,category'])->orderBy('created_at', 'DESC')->get();
+        return response()->json(['data' => $cd]);
     }
+
     public function show($id_cd)
     {
-        $data = Cd::where('id_cd', $id_cd)->get();
-        return response($data);
+        $cd = Cd::with(['category:id_category,category'])->where('id_cd',$id_cd)->orderBy('created_at', 'DESC')->get();
+        return response()->json(['data' => $cd]);
+        // $data = Cd::where('id_cd', $id_cd)->get();
+        // return response($data);
     }
     public function store(Request $request)
     {
         $data = new Cd();
         $data->judul = $request->input('judul');
         $data->deskripsi = $request->input('deskripsi');
-        $data->category = $request->input('category');
+        $data->id_category = $request->input('id_category');
         $data->jumlah = $request->input('jumlah');
         $data->harga = $request->input('harga');
         $data->save();
@@ -42,7 +47,7 @@ class CdController extends Controller
         $data = Cd::where('id_cd', $id_cd)->first();
         $data->judul = $request->input('judul');
         $data->deskripsi = $request->input('deskripsi');
-        $data->category = $request->input('category');
+        $data->id_category = $request->input('id_category');
         $data->jumlah = $request->input('jumlah');
         $data->harga = $request->input('harga');
         $data->save();

@@ -43,3 +43,10 @@ $router->get('/', function () use ($router) {
   $router->post('/transaction/save', 'TransactionController@store');
   $router->post('/transaction/{id_transaksi}/update', 'TransactionController@update');
   $router->post('/transaction/delete/{id_transaksi}', 'TransactionController@destroy');
+
+    //category
+    $router->get('/category', 'CategoryController@index');
+    $router->get('/category/{id_category}', 'CategoryController@show');
+    $router->post('/category/save', 'CategoryController@store');
+    $router->post('/category/{id_category}/update', 'CategoryController@update');
+    $router->post('/category/delete/{id_category}', 'CategoryController@destroy');
