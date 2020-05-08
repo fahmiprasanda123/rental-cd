@@ -46,9 +46,9 @@ class UserController extends Controller
      *
      * URL /user/{id}
      */
-    public function get_user(Request $request, $id)
+    public function get_user(Request $request, $id_user)
     {
-        $user = User::where('id', $id)->get();
+        $user = User::where('id_user', $id_user)->get();
         if ($user) {
               $res['success'] = true;
               $res['message'] = $user;

@@ -29,4 +29,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $hidden = [
         'password', 'api_token'
     ];
+    public function transaction(){
+        return $this->belongsTo('App\Transaction','id_user','id_user');
+    }   
 }

@@ -28,7 +28,7 @@ $router->get('/', function () use ($router) {
   //auth
   $router->post('/login', 'LoginController@index');
   $router->post('/register', 'UserController@register');
-  $router->get('/user/{id}', ['middleware' => 'auth', 'uses' =>  'UserController@get_user']);
+  $router->get('/user/{id_user}', ['middleware' => 'auth', 'uses' =>  'UserController@get_user']);
 
   //cd
   $router->get('/cd', 'CdController@index');

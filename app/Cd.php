@@ -12,4 +12,7 @@ class Cd extends Model
     public function category(){
         return $this->hasMany('App\Category','id_category','id_category');
     }
+    public function transaction(){
+        return $this->belongsTo('App\Cd','id_cd','id_cd');
+    }
 }

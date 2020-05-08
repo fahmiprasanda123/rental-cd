@@ -19,13 +19,20 @@ class TransactionController extends Controller
 
     public function index()
     {
-        $data = Transaction::all();
-        return response($data);
+        // $data = Transaction::all();
+        // return response($data);
+        $transaction = Transaction::with(['user:id_user,email'])->with('cd:id_cd,judul')->orderBy('created_at', 'DESC')->get();
+        return response()->json(['data' => $transaction]);
     }
     public function show($id_transaksi)
     {
-        $data = Transaction::where('id_transaksi', $id_transaksi)->get();
-        return response($data);
+        // $data = Transaction::where('id_transaksi', $id_transaksi)->get();
+        // return response($data);
+        $transaction = Transaction::with(['user:id_user,email'])
+        ->with('cd:id_cd,judul')
+        ->where('id_transaksi',$id_transaksi)
+        ->orderBy('created_at', 'DESC')->get();
+        return response()->json(['data' => $transaction]);
     }
     public function store(Request $request)
     {
